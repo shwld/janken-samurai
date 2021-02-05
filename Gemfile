@@ -17,6 +17,7 @@ gem 'kaminari-i18n'
 gem 'bootstrap_form'
 gem 'rails-i18n'
 gem 'dotenv-rails'
+gem 'hotwire-rails'
 
 # ログイン
 gem 'devise'
