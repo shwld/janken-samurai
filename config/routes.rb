@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   # ユーザー画面
-  devise_for :users, module: :public, controllers: {
-    sessions: 'public/users/sessions',
-    passwords: 'public/users/passwords',
-  }
-  scope '/', module: :public do
+  # devise_for :users, controllers: {
+  #   sessions: 'users/sessions',
+  #   passwords: 'users/passwords',
+  # }
+  scope '/' do
     root to: 'top#index'
   end
 
