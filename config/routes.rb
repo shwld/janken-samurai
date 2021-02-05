@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     root to: 'top#index'
   end
 
+  resources :rooms do
+    resources :messages
+  end
+
   # 管理画面
   devise_for :admin_users, path: :admin, controllers: {
     sessions: 'admin/admin_users/sessions',
