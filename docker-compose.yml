@@ -14,8 +14,10 @@ services:
       - bundle:/usr/local/bundle
     depends_on:
       - db
+      - redis
     links:
       - db
+      - redis
     environment:
       DB_USER: postgres
       DB_NAME: booster-rails
@@ -23,6 +25,10 @@ services:
       DB_HOST: db
     tty: true
     stdin_open: true
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
 volumes:
   bundle:
     driver: local

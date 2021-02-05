@@ -1,9 +1,9 @@
 p#notice = notice
 
+= turbo_stream_from @room
+
 = turbo_frame_tag "room" do
-  p
-    strong Name:
-    = @room.name
+  = render @room
 
   = link_to 'Edit', edit_room_path(@room)
   = link_to 'Back', rooms_path, "data-turbo-frame": "_top"
