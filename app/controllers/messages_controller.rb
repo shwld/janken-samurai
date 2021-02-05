@@ -8,10 +8,14 @@ class MessagesController < ApplicationController
   def create
     @message = @room.messages.create!(message_params)
 
-    redirect_to @room
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to @room }
+    end
   end
 
   private
+
   def set_room
     @room = Room.find(params[:room_id])
   end
