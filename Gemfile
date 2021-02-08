@@ -18,13 +18,13 @@ gem 'bootstrap_form'
 gem 'rails-i18n'
 gem 'dotenv-rails'
 gem 'hotwire-rails'
+gem 'redis'
 
 # ログイン
 gem 'devise'
 gem 'devise-i18n'
 
-# 検索
-gem 'ransack'
+# 検索 gem 'ransack'
 
 # 画像アップロード
 gem 'carrierwave'
