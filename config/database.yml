@@ -8,13 +8,13 @@ default: &default
 
 development:
   <<: *default
-  database: booster-rails_development
+  database: janken-samurai_development
 
 test:
   <<: *default
-  database: booster-rails_test
+  database: janken-samurai_test
 
 production:
   <<: *default
-  database: booster-rails_production
-  username: booster-rails
+  database: janken-samurai_production
+  username: janken-samurai

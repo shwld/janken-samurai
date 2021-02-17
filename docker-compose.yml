@@ -10,7 +10,7 @@ services:
       dockerfile: Dockerfile.development
     command: bash -c 'rm -f tmp/pids/server.pid && rails s -b 0.0.0.0'
     volumes:
-      - .:/booster-rails
+      - .:/janken-samurai
       - bundle:/usr/local/bundle
     depends_on:
       - db
@@ -20,7 +20,7 @@ services:
       - redis
     environment:
       DB_USER: postgres
-      DB_NAME: booster-rails
+      DB_NAME: janken-samurai_db_1
       DB_PASSWORD: password
       DB_HOST: db
     tty: true
