@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   # ユーザー画面
-  # devise_for :users, controllers: {
-  #   sessions: 'users/sessions',
-  #   passwords: 'users/passwords',
-  # }
+  devise_for :users, controllers: {
+    sessions: 'user/sessions',
+    registrations: 'user/registrations',
+  }
   scope '/' do
     root to: 'top#index'
   end
