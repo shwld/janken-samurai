@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   resources :rooms do
     resources :messages
+    resources :games, only: [:create] do
+      resources :hands, only: [:new, :create]
+    end
   end
 
   # 管理画面

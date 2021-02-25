@@ -61,8 +61,10 @@ ActiveRecord::Schema.define(version: 2021_02_25_091022) do
 
   create_table "rooms", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
+    t.uuid "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -88,4 +90,5 @@ ActiveRecord::Schema.define(version: 2021_02_25_091022) do
   add_foreign_key "hands", "games"
   add_foreign_key "hands", "users"
   add_foreign_key "messages", "rooms"
+  add_foreign_key "rooms", "users"
 end
