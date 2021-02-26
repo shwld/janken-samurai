@@ -13,18 +13,17 @@ class HandsController < ApplicationController
   end
 
   def create
-    puts hand_params
     ActiveRecord::Base.transaction do
       @current_user.update!(name: hand_params[:user_name])
       current_or_guest_user.hands.create!(
         choice: hand_params[:choice].to_i,
         game_id: hand_params[:game_id]
       )
-      redirect_to @room
     rescue => e
       flash.now[:error] = e
       render :new
     end
+    redirect_to @room
   end
 
   private
