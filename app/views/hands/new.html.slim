@@ -1,6 +1,8 @@
 h1 Hands#new
 
-= form_with url: room_game_hands_path(@room, @game), local: false do |f|
+p = room_game_url(@room, @game)
+
+= form_with url: room_game_hands_path(@room, @game), local: true, html: { "data-turbo": false } do |f|
   div
     = f.label :user_name, 'ニックネーム'
     = f.text_field :user_name, value: "#{@current_user.address}の#{@current_user.name}"

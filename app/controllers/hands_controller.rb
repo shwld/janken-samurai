@@ -12,5 +12,12 @@ class HandsController < ApplicationController
   end
 
   def create
+    puts hand_params
+  end
+
+  private
+
+  def hand_params
+    params.permit(:user_name, :choice, :room_id, :game_id)
   end
 end
