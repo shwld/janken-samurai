@@ -21,9 +21,9 @@ class HandsController < ApplicationController
       )
     rescue => e
       flash.now[:error] = e
-      render :new
+      return render :new
     end
-    redirect_to @room
+    redirect_to room_game_path(@room, @game)
   end
 
   private
