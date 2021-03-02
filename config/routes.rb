@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :rooms do
     resources :messages
-    resources :games, only: [:show, :create] do
+    resources :games, only: [:show, :update] do
       resources :hands, only: [:new, :create]
     end
   end
