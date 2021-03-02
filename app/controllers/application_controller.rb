@@ -41,7 +41,8 @@ class ApplicationController < ActionController::Base
   end
 
   def create_guest_user
-    u = User.new(:name => Faker::Ancient.god, :address => Faker::Address.city, :email => "guest_#{Time.now.to_i}#{rand(100)}@example.com")
+    c = Faker::Address.city
+    u = User.new(:name => "#{c}の#{Faker::Ancient.god}", :address => c, :email => "guest_#{Time.now.to_i}#{rand(100)}@example.com")
     u.save!(:validate => false)
     session[:guest_user_id] = u.id
     u

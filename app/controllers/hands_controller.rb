@@ -9,13 +9,12 @@ class HandsController < ApplicationController
   end
 
   def new
-    @default_name = "#{@current_user.address}の#{@current_user.name}"
   end
 
   def create
     ActiveRecord::Base.transaction do
       @current_user.update!(name: hand_params[:user_name])
-      current_or_guest_user.hands.create!(
+      @current_user.hands.create!(
         choice: hand_params[:choice].to_i,
         game_id: hand_params[:game_id]
       )
@@ -34,7 +33,7 @@ class HandsController < ApplicationController
 
   def set_room
     @current_user = current_or_guest_user
-    @room = @current_user.rooms.find(params[:room_id])
+    @room = Room.find(params[:room_id])
   end
 
   def set_game
