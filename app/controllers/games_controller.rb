@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_room
-  before_action :set_game
+  before_action :set_game, except: [:index]
 
   def index
   end
@@ -16,17 +16,11 @@ class GamesController < ApplicationController
 
   # じゃんけんの結果を出して次に案内する
   def update
-    Hand.battle(@game)
-    hands = @game.hands
-
-    binding.pry
-
-    # if choices.uniq.size == 1 || choices.uniq.size == 3
-    #   game = @room.games.create
-    #   redirect_to new_room_game_hand_path(@room, game)
-    # else
-    #   redirect_to room_game_path(@room, @game)
-    # end
+    if Hand.battle!(@game)
+      redirect_to room_game_result_path(@room, @game)
+    else
+      puts 'どうしよう'
+    end
   end
 
   private

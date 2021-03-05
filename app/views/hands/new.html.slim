@@ -1,6 +1,6 @@
 h1 Hands#new
 
-p = new_room_game_hand_url(@room, @game)
+= text_field_tag :url, new_room_game_hand_url(@room, @game)
 
 - if flash
   - flash.each do |type, message|

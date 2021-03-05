@@ -26,8 +26,6 @@ class Hand < ApplicationRecord
   validates_uniqueness_of :game_id, scope: [:user_id], message: 'の手の選択は完了しています。'
   validates_presence_of :choice
 
-  scope :same_parents, -> { game.hands }
-
   enum choice: {
     rock: 1,
     scissors: 2,
@@ -35,22 +33,47 @@ class Hand < ApplicationRecord
   }
 
   enum result: {
-    undefined: :undefined,
-    win: :win,
-    lose: :lose,
-    draw: :draw
+    undefined: 'undefined',
+    win: 'win',
+    lose: 'lose',
+    draw: 'draw'
   }, _prefix: true
 
-  def self.battle(game)
-    hands = game.hands.same_parents
+  def self.battle!(game)
+    hands = game.hands
 
     choices = hands.map do |hand|
       Hand.choices[hand.choice]
+    end.uniq
+
+    Hand.transaction do
+      # ひきわけ
+      if choices.size == 1 || choices.size == 3
+        hands.each do |hand|
+          hand.result_draw!
+        end
+
+        return true
+      end
+
+      win = if Hand.is_win_one(*choices)
+              choices.first
+            else
+              choices.second
+            end
+
+      hands.each do |hand|
+        result = hand.choice == win ? :win : :lose
+        hand.update(result: result)
+      end
     end
+    true
+  rescue => e
+    puts e
+    return false
+  end
 
-    # ひきわけ
-    self.result_draw! if choices.uniq.size == 1 || choices.uniq.size == 3
-
-    # TODO: 勝敗の判定をする
+  def self.is_win_one(one, two)
+    (one - two) == -1 || (one - two) == 2
   end
 end

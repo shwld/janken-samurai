@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'results/show'
   # ユーザー画面
   devise_for :users, controllers: {
     sessions: 'user/sessions',
@@ -10,8 +11,9 @@ Rails.application.routes.draw do
 
   resources :rooms do
     resources :messages
-    resources :games, only: [:show, :update] do
+    resources :games, only: [:index, :show, :update] do
       resources :hands, only: [:new, :create]
+      get 'result', to: 'results#show'
     end
   end
 

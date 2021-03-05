@@ -1,10 +1,11 @@
 h1 Games#show
-p Find me in app/views/games/show.html.slim
+
+= text_field_tag :url, new_room_game_hand_url(@room, @game)
 
 - @game.hands.each do |hand|
   p
     = hand.user.name
     = hand.choice
 
-= form_with url: room_game_path, method: :patch do |f|
+= form_with url: room_game_path, method: :patch, local: true do |f|
   = f.submit '決戦'
