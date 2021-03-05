@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :rooms do
     resources :messages
-    resources :games, only: [:index, :show, :update] do
+    resources :games, only: [:index, :show, :create, :update] do
       resources :hands, only: [:new, :create]
       get 'result', to: 'results#show'
     end

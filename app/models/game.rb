@@ -18,4 +18,12 @@
 class Game < ApplicationRecord
   belongs_to :room
   has_many :hands
+
+  scope :yet_battled, -> {
+    joins(:hands).where(hands: { result: 'undefined' }).or(where(hands: nil))
+  }
+
+  def battled?
+    hands.first.result != Hand.results['undefined']
+  end
 end
