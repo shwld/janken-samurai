@@ -30,15 +30,45 @@ RSpec.describe Hand, type: :model do
     describe 'battle!' do
       let!(:user_win) { create(:user) }
       let!(:user_lose) { create(:user) }
+      let!(:user_middle) { create(:user) }
       let!(:room) { create(:room, user: user_win) }
       let(:game) { create(:game, room: room) }
 
-      it '正常に勝敗が算出される' do
-        game.hands.create(user: user_win, choice: 1) # グー
-        game.hands.create(user: user_lose, choice: 2) # チョキ
+      context '勝敗がつく場合' do
+        it '正常に算出される' do
+          game.hands.create(user: user_win, choice: 1) # グー
+          game.hands.create(user: user_lose, choice: 2) # チョキ
+          game.hands.create(user: user_middle, choice: 1) # チョキ
 
-        Hand.battle!(game)
-        binding.pry
+          Hand.battle!(game)
+          expect(user_win.hands.first.result).to eq "win"
+          expect(user_lose.hands.first.result).to eq "lose"
+          expect(user_middle.hands.first.result).to eq "win"
+        end
+      end
+
+      context 'あいこの場合' do
+        it '正常に算出される(3手)' do
+          game.hands.create(user: user_win, choice: 1) # グー
+          game.hands.create(user: user_lose, choice: 2) # チョキ
+          game.hands.create(user: user_middle, choice: 3) # パー
+
+          Hand.battle!(game)
+          expect(user_win.hands.first.result).to eq "draw"
+          expect(user_lose.hands.first.result).to eq "draw"
+          expect(user_middle.hands.first.result).to eq "draw"
+        end
+
+        it '正常に算出される(1手)' do
+          game.hands.create(user: user_win, choice: 1) # グー
+          game.hands.create(user: user_lose, choice: 1) # グー
+          game.hands.create(user: user_middle, choice: 1) # グー
+
+          Hand.battle!(game)
+          expect(user_win.hands.first.result).to eq "draw"
+          expect(user_lose.hands.first.result).to eq "draw"
+          expect(user_middle.hands.first.result).to eq "draw"
+        end
       end
     end
   end

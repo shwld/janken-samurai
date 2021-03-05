@@ -46,27 +46,30 @@ class Hand < ApplicationRecord
       Hand.choices[hand.choice]
     end.uniq
 
-    Hand.transaction do
-      # ひきわけ
-      if choices.size == 1 || choices.size == 3
+    # ひきわけ
+    if choices.size == 1 || choices.size == 3
+      Hand.transaction do
         hands.each do |hand|
           hand.result_draw!
         end
-
-        return true
       end
 
-      win = if Hand.is_win_one(*choices)
-              choices.first
-            else
-              choices.second
-            end
+      return true
+    end
 
+    win = if Hand.is_win_one(*choices)
+            choices.first
+          else
+            choices.second
+          end
+
+    Hand.transaction do
       hands.each do |hand|
-        result = hand.choice == win ? :win : :lose
+        result = Hand.choices[hand.choice] == win ? :win : :lose
         hand.update(result: result)
       end
     end
+
     true
   rescue => e
     puts e
