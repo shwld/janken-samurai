@@ -1,0 +1,8 @@
+h1 Results#show
+p Find me in app/views/results/show.html.slim
+
+- @game.hands.each do |hand|
+  p
+    = hand.user.name
+    = hand.choice
+    = hand.result
