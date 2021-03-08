@@ -20,7 +20,7 @@ class Game < ApplicationRecord
   has_many :hands
 
   scope :yet_battled, -> {
-    joins(:hands).where(hands: { result: 'undefined' }).or(where(hands: nil))
+    left_joins(:hands).where(hands: { result: 'undefined' }).or(where(hands: { id: nil }))
   }
 
   def battled?
