@@ -1,15 +1,20 @@
 Rails.application.routes.draw do
+  get 'results/show'
   # ユーザー画面
-  # devise_for :users, controllers: {
-  #   sessions: 'users/sessions',
-  #   passwords: 'users/passwords',
-  # }
+  devise_for :users, controllers: {
+    sessions: 'user/sessions',
+    registrations: 'user/registrations',
+  }
   scope '/' do
     root to: 'top#index'
   end
 
   resources :rooms do
     resources :messages
+    resources :games, only: [:index, :show, :create, :update] do
+      resources :hands, only: [:new, :create]
+      get 'result', to: 'results#show'
+    end
   end
 
   # 管理画面

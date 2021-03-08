@@ -2,7 +2,7 @@
 #
 # Table name: admin_users
 #
-#  id                     :bigint(8)        not null, primary key
+#  id                     :uuid             not null, primary key
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :inet
 #  email                  :string           default(""), not null

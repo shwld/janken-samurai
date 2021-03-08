@@ -1,0 +1,25 @@
+h1 Hands#new
+
+= text_field_tag :url, new_room_game_hand_url(@room, @game)
+
+- if flash
+  - flash.each do |type, message|
+    p = message
+
+= form_with url: room_game_hands_path(@room, @game), local: true, html: { "data-turbo": false } do |f|
+  div
+    = f.label :user_name, 'ニックネーム'
+    = f.text_field :user_name, value: @current_user.name
+
+  div
+    = f.label :choice, 'グー', value: 1
+    = f.radio_button :choice, 1
+
+    = f.label :choice, 'チョキ', value: 2
+    = f.radio_button :choice, 2
+
+    = f.label :choice, 'パー', value: 3
+    = f.radio_button :choice, 3
+
+  div
+    = f.submit '決定'

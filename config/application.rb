@@ -36,10 +36,10 @@ module BoosterRails
       g.javascripts false
       g.helper false
       g.assets false
-      g.helper false
       g.template_engine :slim
       g.scaffold_controller "scaffold_controller"
       g.fixture_replacement :factory_bot, dir: "spec/factories"
+      g.orm :active_record, primary_key_type: :uuid
     end
   end
 end

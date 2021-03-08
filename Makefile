@@ -58,3 +58,7 @@ reset:
 .PHONY: set-development
 set:
 	docker-compose run --rm app bundle exec rails db:environment:set RAILS_ENV=development
+
+.PHONY: guard
+guard:
+	docker-compose run --rm app bundle exec guard --no-bundler-warning --no-interactions

@@ -1,0 +1,11 @@
+h1 Games#show
+
+= text_field_tag :url, new_room_game_hand_url(@room, @game)
+
+h2 参加者
+- @game.hands.each do |hand|
+  p
+    = hand.user.name
+
+= form_with url: room_game_path, method: :patch, local: true do |f|
+  = f.submit '決戦'

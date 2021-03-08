@@ -1,7 +1,7 @@
 FROM ruby:2.7.1
 ENV LANG C.UTF-8
 
-ENV APP_HOME /booster-rails
+ENV APP_HOME /janken-samurai
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 

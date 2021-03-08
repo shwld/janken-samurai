@@ -4,6 +4,7 @@ class RoomsController < ApplicationController
   # GET /rooms or /rooms.json
   def index
     @rooms = Room.all
+    @current_user = current_or_guest_user
   end
 
   # GET /rooms/1 or /rooms/1.json
@@ -21,17 +22,9 @@ class RoomsController < ApplicationController
 
   # POST /rooms or /rooms.json
   def create
-    @room = Room.new(room_params)
-
-    respond_to do |format|
-      if @room.save
-        format.html { redirect_to @room, notice: "Room was successfully created." }
-        format.json { render :show, status: :created, location: @room }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
-      end
-    end
+    room = current_or_guest_user.rooms.create
+    game = room.games.create
+    redirect_to new_room_game_hand_path(room, game)
   end
 
   # PATCH/PUT /rooms/1 or /rooms/1.json

@@ -1,0 +1,10 @@
+h1 Results#show
+
+- @game.hands.each do |hand|
+  p
+    = hand.user.name
+    = hand.choice
+    = hand.result
+
+= form_with url: room_games_path(@room), local: true do |f|
+  = f.submit '次なる戦へ'

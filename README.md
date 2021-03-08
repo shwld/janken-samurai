@@ -9,6 +9,7 @@ Docker for Mac / Windows
 $ docker-compose build
 $ docker-compose run --rm app bin/setup
 $ cp docker-compose.override.yml.example  docker-compose.override.yml
+$ docker-compose run --rm app yarn
 ```
 
 ## 起動

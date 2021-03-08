@@ -32,6 +32,7 @@ gem 'mini_magick'
 
 # データ投入
 gem 'seed-fu'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -40,11 +41,12 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'spring-commands-rspec'
   gem 'selenium-webdriver'
+  gem 'guard-rspec', require: false
+  gem 'pry-byebug'
+  gem 'pry-rails'
 end
 
 group :development do
-  gem 'pry-byebug'
-  gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'web-console', '>= 3.3.0'
