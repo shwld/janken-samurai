@@ -1,6 +1,6 @@
 import { Controller } from "stimulus"
 
-export default class extends Controller {
+export default class ResetFormController extends Controller {
   reset() {
     this.element.reset()
   }
