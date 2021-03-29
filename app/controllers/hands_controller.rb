@@ -14,7 +14,7 @@ class HandsController < ApplicationController
   def create
     ActiveRecord::Base.transaction do
       @current_user.update!(name: hand_params[:user_name])
-      @current_user.hands.create!(
+      @hand = @current_user.hands.create!(
         choice: hand_params[:choice].to_i,
         game_id: hand_params[:game_id]
       )
@@ -22,7 +22,11 @@ class HandsController < ApplicationController
       flash.now[:error] = e
       return render :new
     end
-    redirect_to room_game_path(@room, @game)
+
+    respond_to do |f|
+      f.turbo_stream
+      f.html { redirect_to room_game_path(@room, @game) }
+    end
   end
 
   private

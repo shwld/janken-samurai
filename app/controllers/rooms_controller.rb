@@ -24,7 +24,8 @@ class RoomsController < ApplicationController
   def create
     room = current_or_guest_user.rooms.create
     game = room.games.create
-    redirect_to new_room_game_hand_path(room, game)
+    redirect_to room_game_path(room, game)
+    # redirect_to new_room_game_hand_path(room, game)
   end
 
   # PATCH/PUT /rooms/1 or /rooms/1.json

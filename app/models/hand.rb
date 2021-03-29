@@ -23,6 +23,8 @@ class Hand < ApplicationRecord
   belongs_to :user
   belongs_to :game
 
+  broadcasts_to :game
+
   validates_uniqueness_of :game_id, scope: [:user_id], message: 'の手の選択は完了しています。'
   validates_presence_of :choice
 
