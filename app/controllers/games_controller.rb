@@ -16,7 +16,7 @@ class GamesController < ApplicationController
     # うまく動いてない
     @game = @room.games.yet_battled.order(:created_at).first || @room.games.new
     if @game.persisted? || @game.save
-      redirect_to new_room_game_hand_path(@room, @game)
+      redirect_to room_game_path(@room, @game)
     else
       puts 'どうしよう'
     end
