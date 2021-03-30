@@ -14,17 +14,21 @@ turbo-frame {
   display: flex;
   align-items: start;
   justify-content: space-between;
-  margin: 0 20px;
+  margin: 0 auto;
   height: 110px;
+  max-width: 1000px;
 }
 
 .container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container-top {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 800px;
-  margin: 0 auto;
   height: calc(100vh - 220px);
 }
 
