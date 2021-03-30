@@ -1,4 +1,7 @@
-h1 じゃんけん侍
+.container
+  = button_to rooms_path, class: 'btn btn-c' do
+    span 開戦
 
-= button_to '始める', rooms_path
-// ここでroomを新規作成するようにする
+  = image_tag 'janken_gu.png', class: 'rotation gu'
+  = image_tag 'janken_choki.png', class: 'rotation choki'
+  = image_tag 'janken_pa.png', class: 'rotation pa'
