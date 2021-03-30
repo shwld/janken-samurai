@@ -1,6 +1,7 @@
 h1 Games#show
 
-= text_field_tag :url, new_room_game_hand_url(@room, @game)
+span このURLを共有してください
+= text_field_tag :url, room_game_url(@room, @game)
 
 = turbo_stream_from @game
 
