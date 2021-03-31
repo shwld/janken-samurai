@@ -1,0 +1,57 @@
+.header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  margin: 0 auto;
+  height: 110px;
+  max-width: 1000px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container-top {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 220px);
+}
+
+.start-button {
+  display: flex;
+  justify-content: center;
+}
+
+.gu {
+  position: absolute;
+  top: 40px;
+  left: 10px;
+}
+
+.choki {
+  position: absolute;
+  bottom: 40px;
+  left: 90px;
+}
+
+.pa {
+  position: absolute;
+  right: 40px;
+  z-index: -1;
+}
+
+.rotation {
+  animation: r1 500ms linear infinite;
+}
+
+@keyframes r1 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

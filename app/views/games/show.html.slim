@@ -1,7 +1,6 @@
-h1 Games#show
-
-span このURLを共有してください
-= text_field_tag :url, room_game_url(@room, @game)
+.share-container
+  p.share-desc このURLを共有してください
+  = text_field_tag :url, room_game_url(@room, @game), class: 'input input--share'
 
 = turbo_stream_from @game
 

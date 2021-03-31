@@ -1,26 +1,30 @@
-h1 Hands#new
-
-/ = text_field_tag :url, new_room_game_hand_url(@room, @game)
-
 = turbo_frame_tag "new_hand" do
   - if flash
     - flash.each do |type, message|
       p = message
 
-  = form_with url: room_game_hands_path(@room, @game) do |f|
-    div
-      = f.label :user_name, 'ニックネーム'
-      = f.text_field :user_name, value: @current_user.name
+  .hand-form
+    = form_with url: room_game_hands_path(@room, @game), class: 'form-center' do |f|
+      div
+        div
+          = f.label :user_name, 'ニックネーム'
+          = f.text_field :user_name, value: @current_user.name, class: 'input input--with-label'
 
-    div
-      = f.label :choice, 'グー', value: 1
-      = f.radio_button :choice, 1
+        .choices
+          .choice
+            = f.radio_button :choice, 1
+            = f.label :choice, value: 1 do
+              = image_tag 'janken_gu.png', class: 'choice-image'
 
-      = f.label :choice, 'チョキ', value: 2
-      = f.radio_button :choice, 2
+          .choice
+            = f.radio_button :choice, 2
+            = f.label :choice, value: 2 do
+              = image_tag 'janken_choki.png', class: 'choice-image'
 
-      = f.label :choice, 'パー', value: 3
-      = f.radio_button :choice, 3
+          .choice
+            = f.radio_button :choice, 3
+            = f.label :choice, value: 3 do
+              = image_tag 'janken_pa.png', class: 'choice-image'
 
-    div
-      = f.submit '決定'
+        div
+          = f.submit '決定', class: 'btn--submit'

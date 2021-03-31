@@ -1,0 +1,78 @@
+.share-container {
+  margin: 20px 0;
+}
+
+.share-desc {
+  margin: 0;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+
+  &--share {
+    width: 100%;
+  }
+
+  &--with-label {
+    margin-left: 10px;
+  }
+}
+
+.hand-form {
+  padding: 20px;
+  border-radius: 15px;
+  filter: drop-shadow(5px 5px 7px rgba(0, 0, 0, .15));
+  background-color: white;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.form-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.choices {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.choice {
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > input[type=radio] {
+    display: none;
+
+    &:checked + label {
+      border-radius: 15px;
+      background-color: #c300ff;
+    }
+  }
+
+  & > label {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+  }
+
+  &:hover {
+    background-color: #c300ff;
+    transition: background-color 4s;
+  }
+}
+
+.choice-image {
+  object-fit: contain;
+  width: 50px;
+  height: 50px;
+}
