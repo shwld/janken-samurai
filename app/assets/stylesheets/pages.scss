@@ -82,3 +82,24 @@
   filter: drop-shadow(5px 5px 7px rgba(0, 0, 0, .15));
   background-color: white;
 }
+
+.hands-list {
+  position: relative;
+  list-style: none;
+
+  &:before {
+    content: "-";
+    position: absolute;
+    left: 20px;
+  }
+}
+
+.battle-desc-container {
+  margin-top: 15px;
+}
+
+.battle-desc {
+  font-size: 0.8em;
+  color: #959595;
+  margin: 0;
+}

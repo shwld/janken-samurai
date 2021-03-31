@@ -8,9 +8,13 @@
 
 .participants
   = turbo_frame_tag "hands" do
-    h2 参加者
+    h2.text-center 参戦者
     #hands
-      = render @game.hands
+      ul.hands-list
+        = render @game.hands
 
-= form_with url: room_game_path, method: :patch, local: true do |f|
-  = f.submit '決戦'
+  = form_with url: room_game_path, method: :patch, local: true do |f|
+    = f.submit '決戦', class: 'btn--submit'
+    .battle-desc-container
+      p.battle-desc ・参戦者が全員揃ったら決戦してください。
+      p.battle-desc ・決戦したら参戦することができなくなります。
