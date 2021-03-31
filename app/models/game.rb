@@ -17,7 +17,7 @@
 #
 class Game < ApplicationRecord
   belongs_to :room
-  has_many :hands
+  has_many :hands, dependent: :destroy
 
   scope :yet_battled, -> {
     left_joins(:hands).where(hands: { result: 'undefined' }).or(where(hands: { id: nil }))
