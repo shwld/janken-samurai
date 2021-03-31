@@ -1,3 +1,13 @@
+.header_link {
+  color: #333;
+  text-decoration: none;
+
+  &:active {
+    color: #333;
+    text-decoration: none;
+  }
+}
+
 .share-container {
   margin: 20px 0;
 }
@@ -83,17 +93,6 @@
   background-color: white;
 }
 
-.hands-list {
-  position: relative;
-  list-style: none;
-
-  &:before {
-    content: "-";
-    position: absolute;
-    left: 20px;
-  }
-}
-
 .battle-desc-container {
   margin-top: 15px;
 }
@@ -102,4 +101,29 @@
   font-size: 0.8em;
   color: #959595;
   margin: 0;
+}
+
+.result_choice {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.result_hand {
+}
+
+.result_name {
+  margin-left: 10px;
+}
+
+.result_result {
+  margin-left: 10px;
+}
+
+.result_container {
+  margin: 30px auto;
+}
+
+.hand-item {
+  margin-left: 20px;
 }

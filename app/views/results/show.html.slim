@@ -1,10 +1,29 @@
-h1 Results#show
+= image_tag 'janken_gu.png', class: 'rotation gu transparent'
+= image_tag 'janken_choki.png', class: 'rotation choki transparent'
+= image_tag 'janken_pa.png', class: 'rotation pa transparent'
 
-- @game.hands.each do |hand|
-  p
-    = hand.user.name
-    = hand.choice
-    = hand.result
+.container--sm
+  h2.text-center 戦の結果
 
-= form_with url: room_games_path(@room), local: true do |f|
-  = f.submit '次なる戦へ'
+  .result_container
+    ul.list
+      - @game.hands.each do |hand|
+        li
+          span.result_hand
+            - if hand.choice == 'rock'
+              = image_tag 'janken_gu.png', class: 'result_choice'
+            - if hand.choice == 'scissors'
+              = image_tag 'janken_choki.png', class: 'result_choice'
+            - if hand.choice == 'paper'
+              = image_tag 'janken_pa.png', class: 'result_choice'
+          span.result_name = hand.user.name
+          span.result_result
+            - if hand.result == 'win'
+              | 勝ち
+            - if hand.result == 'draw'
+              | 引き分け
+            - if hand.result == 'lose'
+              | 負け
+
+  = form_with url: room_games_path(@room), local: true do |f|
+    = f.submit '次なる戦へ', class: 'btn--submit'
