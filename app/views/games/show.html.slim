@@ -6,10 +6,11 @@
 
 = turbo_frame_tag "new_hand", src: new_room_game_hand_path(@room, @game), target: "_top"
 
-= turbo_frame_tag "hands" do
-  h2 参加者
-  #hands
-    = render @game.hands
+.participants
+  = turbo_frame_tag "hands" do
+    h2 参加者
+    #hands
+      = render @game.hands
 
 = form_with url: room_game_path, method: :patch, local: true do |f|
   = f.submit '決戦'
