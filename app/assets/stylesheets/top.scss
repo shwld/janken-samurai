@@ -12,7 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 220px);
+  height: calc(100vh - 110px);
 }
 
 .start-button {
@@ -49,4 +49,18 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.intro-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.top-desc-container {
+  margin-bottom: 40px;
+}
+
+.top-desc {
+  margin: 0;
 }

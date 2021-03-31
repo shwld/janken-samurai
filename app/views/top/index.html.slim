@@ -5,3 +5,29 @@
   = image_tag 'janken_gu.png', class: 'rotation gu'
   = image_tag 'janken_choki.png', class: 'rotation choki'
   = image_tag 'janken_pa.png', class: 'rotation pa'
+
+hr
+
+h2 使い方
+
+h3 1. 開戦ボタンを押すと、手の選択や招待ができるページが表示されます。
+
+= image_tag 'new_hand.png', class: 'intro-image'
+
+.top-desc-container
+  p.top-desc 参戦者にURLを共有したり、自分の手を選択したりしましょう。
+  p.top-desc 参戦者全員が手を選択し終えたら、「決戦」ボタンを押してください。
+
+h3 2. 結果がわかります。
+
+= image_tag 'result.png', class: 'intro-image'
+
+.top-desc-container
+  p.top-desc もう一度同じメンバーでじゃんけんをしたい場合は、「次なる戦へ」ボタンを押してください。
+  p.top-desc URLを共有しなくても、同じ戦場が開きます。
+
+footer
+  p.text-right
+    | なにかあれば、
+    = link_to 'yubachiri', 'https://twitter.com/yubachiri', target: '_blank'
+    | まで
