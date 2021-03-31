@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-  <title>play Rails</title>
+  <title>じゃんけん侍</title>
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -10,7 +10,7 @@
 
 
 <div class="header">
-  <%= link_to root_path do %>
+  <%= link_to root_path, class: 'header_link' do %>
     <h2>じゃんけん侍</h2>
   <% end %>
 
